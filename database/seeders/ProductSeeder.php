@@ -16,15 +16,27 @@ class ProductSeeder extends Seeder
                 'name' => 'Corrugated Sheet Premium',
                 'category' => 'Corrugated Sheet',
                 'description' => 'Produk lembaran karton bergelombang berkualitas tinggi.',
-                'image' => 'corrugated-sheet.jpg',
+                'image' => 'products/corrugated-sheet.jpg',
             ],
             [
                 'name' => 'Laminated Box HD',
                 'category' => 'Corrugated Box',
                 'description' => 'Box dengan kekuatan tambahan dan lapisan laminasi.',
-                'image' => 'laminated-box.jpg',
+                'image' => 'products/laminated-box.jpg',
             ],
-            // Tambahkan produk lainnya di sini
+            //tambahkan produk lainnya sesuai kebutuhan
+            [
+                'name' => 'Pra-Cetak Box',
+                'category' => 'Pra-Cetak Corrugated Box',
+                'description' => 'Box pra-cetak dengan desain khusus.',
+                'image' => 'products/pre-printed-box.jpg',
+            ],
+            [
+                'name' => 'Flexo Printing Machine',
+                'category' => 'Our Corrugators & Flexo Printing Machine',
+                'description' => 'Mesin cetak flexo untuk produksi karton berkualitas.',
+                'image' => 'products/flexo-printing-machine.jpg',
+            ],
         ];
 
         foreach ($products as $data) {

@@ -8,13 +8,33 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ProductController;
 
+/*
+|--------------------------------------------------------------------------
+| Halaman Utama
+|--------------------------------------------------------------------------
+*/
+
 Route::get('/', [CompanyController::class, 'index'])->name('home');
 
+/*
+|--------------------------------------------------------------------------
+| Halaman Layanan
+|--------------------------------------------------------------------------
+*/
 Route::get('/layanan', [ServiceController::class, 'index'])->name('services');
 
+/*
+|--------------------------------------------------------------------------
+| Halaman Tim
+|--------------------------------------------------------------------------
+*/
 Route::get('/tim', [TeamController::class, 'index'])->name('team');
 
-Route::get('/berita', [PostController::class, 'index'])->name('posts');
+/*
+|--------------------------------------------------------------------------
+| Halaman Berita
+|--------------------------------------------------------------------------
+*/
 Route::get('/berita', [PostController::class, 'index'])->name('posts');
 Route::get('/berita/csr', [PostController::class, 'csr'])->name('posts.csr');
 Route::get('/berita/donasi', [PostController::class, 'donasi'])->name('posts.donasi');
@@ -23,17 +43,27 @@ Route::get('/berita/pelatihan', [PostController::class, 'pelatihan'])->name('pos
 
 
 Route::get('/berita/{id}', [PostController::class, 'show'])->name('posts.show');
-Route::get('/berita/kategori/{id}', [PostController::class, 'filterByCategory'])->name('posts.byCategory');
+
+// Perhatikan: tidak boleh pakai nama route yang sama
+Route::get('/berita/kategori/id/{id}', [PostController::class, 'filterByCategory'])->name('posts.byCategoryId');
 Route::get('/berita/kategori/{slug}', [PostController::class, 'byCategory'])->name('posts.byCategory');
 
+/*
+|--------------------------------------------------------------------------
+| Halaman Galeri
+|--------------------------------------------------------------------------
+*/
 Route::get('/galeri', [GalleryController::class, 'index'])->name('galleries');
 
-Route::get('/berita/kategori/{id}', [PostController::class, 'filterByCategory'])->name('posts.byCategory');
-Route::get('/berita/kategori/{slug}', [PostController::class, 'byCategory'])->name('posts.byCategory');
-
+/*
+|--------------------------------------------------------------------------
+| Halaman Produk
+|--------------------------------------------------------------------------
+*/
+// Gunakan penamaan standar RESTful
 Route::get('/produk', [ProductController::class, 'index'])->name('products.index');
-Route::get('/produk/kategori/{slug}', [ProductController::class, 'byCategory'])->name('products.byCategory');
 Route::get('/produk/{slug}', [ProductController::class, 'show'])->name('products.show');
-Route::get('/produk/corrugated-sheet', function () {
-    return view('products.corrugated-sheet');
-})->name('products.corrugated-sheet');
+Route::get('/produk/kategori/{slug}', [ProductController::class, 'byCategory'])->name('products.byCategory');
+
+// Untuk halaman produk khusus (seperti corrugated-sheet)
+Route::get('/produk/corrugated-sheet', fn() => view('products.corrugated-sheet'))->name('products.corrugated-sheet');

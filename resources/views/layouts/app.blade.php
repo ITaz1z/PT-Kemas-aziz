@@ -57,7 +57,7 @@
                             Produk
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ route('products.index') }}">Semua Produk</a></li>
+                            <!-- <li><a class="dropdown-item" href="{{ route('products.index') }}">Semua Produk</a></li> -->
                             @foreach($navProductCategories as $pCat)
                             <li><a class="dropdown-item" href="{{ route('products.byCategory', $pCat->slug) }}">{{ $pCat->name }}</a></li>
                             @endforeach

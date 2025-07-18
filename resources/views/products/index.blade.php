@@ -1,35 +1,45 @@
 @extends('layouts.app')
 
+@section('title', 'Produk Kami')
+
 @section('content')
-<div class="container mt-5">
-    <h2>Produk Kami</h2>
+<div class="container py-4">
+    <h2 class="text-center mb-4">Produk Kami</h2>
 
-    <ul class="nav nav-pills mb-3">
-        <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('products') ? 'active' : '' }}" href="{{ route('products') }}">Semua</a>
-        </li>
+    {{-- Tombol Kategori --}}
+    <div class="d-flex flex-wrap justify-content-center mb-4 gap-2">
         @foreach ($categories as $cat)
-            <li class="nav-item">
-                <a class="nav-link {{ isset($category) && $category->id == $cat->id ? 'active' : '' }}" href="{{ route('products.byCategory', $cat->slug) }}">
-                    {{ $cat->name }}
-                </a>
-            </li>
+        <a href="{{ route('products.byCategory', $cat->slug) }}"
+            class="btn {{ $category->id === $cat->id ? 'btn-primary' : 'btn-outline-primary' }}">
+            {{ $cat->name }}
+        </a>
         @endforeach
-    </ul>
+    </div>
 
+    {{-- Daftar Produk --}}
     <div class="row">
-        @foreach ($products as $product)
-        <div class="col-md-4 mb-4">
-            <div class="card h-100">
-                <img src="{{ asset('images/' . $product->image) }}" class="card-img-top" alt="{{ $product->name }}">
-                <div class="card-body">
-                    <h5>{{ $product->name }}</h5>
-                    <p>{{ $product->description }}</p>
-                    <p><strong>Kategori:</strong> {{ $product->category->name }}</p>
+        @forelse ($products as $product)
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                @if($product->image)
+                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="img-fluid rounded shadow">
+                @else
+                <img src="https://via.placeholder.com/300x200?text=No+Image" class="card-img-top" alt="No Image">
+                @endif
+
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">{{ $product->name }}</h5>
+                    <p class="card-text">{{ Str::limit($product->description, 100) }}</p>
+                    <p class="mb-2"><strong>Kategori:</strong> {{ $product->category->name }}</p>
+                    <a href="{{ route('products.show', $product->slug) }}" class="btn btn-sm btn-outline-primary mt-auto">Lihat Detail</a>
                 </div>
             </div>
         </div>
-        @endforeach
+        @empty
+        <div class="col-12 text-center">
+            <p>Belum ada produk untuk kategori ini.</p>
+        </div>
+        @endforelse
     </div>
 </div>
 @endsection
