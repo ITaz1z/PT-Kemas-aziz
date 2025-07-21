@@ -7,7 +7,6 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-Deskripsi Proyek Website PT Kemas
 Website PT Kemas adalah sebuah situs perusahaan yang dikembangkan menggunakan Laravel dan Bootstrap, dengan tujuan utama untuk menampilkan informasi seputar perusahaan, layanan, produk, dan aktivitas terbaru. Proyek ini dirancang secara modular agar mudah dikembangkan lebih lanjut, serta responsif agar dapat diakses dengan baik melalui perangkat desktop maupun mobile.
 
 Fitur-fitur utama yang telah dibangun:
