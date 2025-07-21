@@ -1,0 +1,9 @@
+
+
+.gambar-produk {
+  transition: transform 0.3s ease;
+}
+
+.gambar-produk:hover {
+  transform: scale(1.05);
+}

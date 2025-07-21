@@ -5,7 +5,12 @@
     <div class="row">
         <div class="col-md-6 mb-4">
             @if ($product->image)
-            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="img-fluid rounded shadow">
+            <img src="{{ asset('storage/' . $product->image) }}"
+                class="gambar-produk"
+                alt="{{ $product->name }}"
+                style="max-height: 300px; object-fit: cover;">
+
+
             @else
             <img src="https://via.placeholder.com/500x300?text=No+Image" class="img-fluid rounded shadow" alt="No Image">
             @endif

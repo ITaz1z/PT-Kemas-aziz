@@ -19,11 +19,12 @@ class ProductController extends Controller
     public function byCategory($slug)
     {
         $category = ProductCategory::where('slug', $slug)->firstOrFail();
-        $products = Product::where('product_category_id', $category->id)->get();
+        $products = $category->products; // asumsinya relasi sudah benar
         $categories = ProductCategory::all();
 
-        return view('products.index', compact('products', 'categories', 'category'));
+        return view('products.by-category', compact('products', 'category', 'categories'));
     }
+
 
     public function show($slug)
     {
@@ -31,4 +32,6 @@ class ProductController extends Controller
 
         return view('products.show', compact('product'));
     }
+
+    
 }

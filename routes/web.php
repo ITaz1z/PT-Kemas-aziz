@@ -67,3 +67,5 @@ Route::get('/produk/kategori/{slug}', [ProductController::class, 'byCategory'])-
 
 // Untuk halaman produk khusus (seperti corrugated-sheet)
 Route::get('/produk/corrugated-sheet', fn() => view('products.corrugated-sheet'))->name('products.corrugated-sheet');
+
+// 

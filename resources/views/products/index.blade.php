@@ -22,17 +22,21 @@
         <div class="col-md-6 col-lg-4 mb-4">
             <div class="card h-100 shadow-sm">
                 @if($product->image)
-                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="img-fluid rounded shadow">
-                @else
-                <img src="https://via.placeholder.com/300x200?text=No+Image" class="card-img-top" alt="No Image">
-                @endif
+                <<img src="{{ asset('storage/' . $product->image) }}"
+                    class="gambar-produk"
+                    alt="{{ $product->name }}"
+                    style="max-height: 300px; object-fit: cover;">
 
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">{{ $product->name }}</h5>
-                    <p class="card-text">{{ Str::limit($product->description, 100) }}</p>
-                    <p class="mb-2"><strong>Kategori:</strong> {{ $product->category->name }}</p>
-                    <a href="{{ route('products.show', $product->slug) }}" class="btn btn-sm btn-outline-primary mt-auto">Lihat Detail</a>
-                </div>
+                    @else
+                    <img src="https://via.placeholder.com/300x200?text=No+Image" class="card-img-top" alt="No Image">
+                    @endif
+
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">{{ $product->name }}</h5>
+                        <p class="card-text">{{ Str::limit($product->description, 100) }}</p>
+                        <p class="mb-2"><strong>Kategori:</strong> {{ $product->category->name }}</p>
+                        <a href="{{ route('products.show', $product->slug) }}" class="btn btn-sm btn-outline-primary mt-auto">Lihat Detail</a>
+                    </div>
             </div>
         </div>
         @empty
