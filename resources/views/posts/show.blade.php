@@ -12,14 +12,16 @@
 
             {{-- Info kategori & tanggal --}}
             <p class="text-muted">
+                @if ($post->category)
                 Kategori:
                 <a href="{{ route('posts.byCategory', $post->category->slug) }}" class="text-decoration-none">
-                    {{ $post->category->name ?? '-' }}
+                    {{ $post->category->name }}
                 </a>
-                • Diterbitkan:
-                {{ $post->created_at ? $post->created_at->format('d M Y') : '-' }}
+                @else
+                Kategori: -
+                @endif
+                • {{ $post->created_at->format('d M Y') }}
             </p>
-
 
             {{-- Gambar thumbnail --}}
             @if ($post->image)
@@ -35,6 +37,17 @@
                 {!! nl2br(e($post->content)) !!}
             </article>
 
+            {{-- Galeri Tambahan --}}
+            @if ($post->images->count())
+            <h5 class="mt-5">Galeri Tambahan:</h5>
+            <div class="gallery-grid">
+                @foreach ($post->images as $image)
+                <div class="gallery-grid-item">
+                    <img src="{{ asset('storage/' . $image->image) }}" alt="Foto tambahan" class="img-fluid">
+                </div>
+                @endforeach
+            </div>
+            @endif
             {{-- Tombol kembali --}}
             <div class="mt-4">
                 <a href="{{ route('posts.index') }}" class="btn btn-secondary">← Kembali ke Berita</a>

@@ -29,4 +29,8 @@ class Post extends Model
 
         return $slug;
     }
+    public function images()
+    {
+        return $this->hasMany(PostImage::class);
+    }
 }

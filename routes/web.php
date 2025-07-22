@@ -38,11 +38,11 @@ Route::get('/tim', [TeamController::class, 'index'])->name('team');
 // Semua berita
 Route::get('/berita', [PostController::class, 'index'])->name('posts.index');
 
-// Detail berita berdasarkan slug
-Route::get('/berita/{slug}', [PostController::class, 'show'])->name('posts.show');
 
 // Berita berdasarkan kategori
 Route::get('/berita/kategori/{slug}', [PostController::class, 'byCategory'])->name('posts.byCategory');
+
+Route::get('/berita/{post:slug}', [PostController::class, 'show'])->name('posts.show');
 
 /*
 |--------------------------------------------------------------------------

@@ -6,8 +6,6 @@ use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePostRequest;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -16,7 +14,6 @@ class PostController extends Controller
     {
         $query = Post::with('category')->latest();
 
-        // Fitur pencarian
         if ($search = $request->query('search')) {
             $query->where('title', 'like', "%{$search}%")
                 ->orWhere('content', 'like', "%{$search}%");
@@ -27,14 +24,14 @@ class PostController extends Controller
         return view('posts.index', compact('posts'));
     }
 
-    // Detail berita berdasarkan slug
-    public function show($slug)
+    // Tampilkan detail berita berdasarkan slug
+    public function show(Post $post)
     {
-        $post = Post::where('slug', $slug)->with('category')->firstOrFail();
+        $post->loadMissing(['images', 'category']); // Pastikan eager loading kalau belum
         return view('posts.show', compact('post'));
     }
 
-    // Tampilkan berita berdasarkan kategori
+    // Berita berdasarkan kategori
     public function byCategory($slug)
     {
         $category = Category::where('slug', $slug)->firstOrFail();
@@ -48,16 +45,13 @@ class PostController extends Controller
     {
         $data = $request->validated();
 
-        // Upload gambar jika ada
         if ($request->hasFile('image')) {
             $data['image'] = $request->file('image')->store('posts', 'public');
         }
 
-        // Generate slug unik
         $data['slug'] = Post::generateUniqueSlug($request->title);
 
-        // Simpan ke database
-        Post::create($data);
+        $post = Post::create($data);
 
         return redirect()->route('posts.index')->with('success', 'Berita berhasil ditambahkan.');
     }
