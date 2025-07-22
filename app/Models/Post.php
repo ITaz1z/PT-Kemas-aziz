@@ -2,23 +2,31 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 use App\Models\Category;
 
 class Post extends Model
 {
-    use HasFactory;
+    protected $fillable = ['title', 'slug', 'content', 'category_id', 'image'];
 
-    protected $fillable = [
-        'title',
-        'content',
-        'image',
-        'category_id',
-    ];
-
+    // Relasi ke kategori
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    // Slug generator
+    public static function generateUniqueSlug($title)
+    {
+        $slug = Str::slug($title);
+        $original = $slug;
+        $i = 1;
+
+        while (static::where('slug', $slug)->exists()) {
+            $slug = $original . '-' . $i++;
+        }
+
+        return $slug;
     }
 }
