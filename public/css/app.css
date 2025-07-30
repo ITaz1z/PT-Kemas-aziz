@@ -1,3 +1,4 @@
+/* ----------------------------- */
 /* Umum */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -13,102 +14,24 @@ body {
     color: #ffffff !important;
 }
 
-/* Aktif */
 .navbar-nav .nav-link.active {
     color: #ffc107 !important;
     font-weight: 600;
-}
-
-/* CSS Beranda PT Kemas */
-.hero-section {
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/images/hero-bg.jpg') center/cover no-repeat;
-    color: #fff;
-    padding: 100px 0 60px 0;
-    text-align: center;
-    position: relative;
-}
-.hero-section h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    letter-spacing: 1px;
-}
-.hero-section p {
-    font-size: 1.3rem;
-    margin-bottom: 30px;
-}
-.hero-btn {
-    background: #ffc107;
-    color: #222;
-    border: none;
-    padding: 12px 36px;
-    font-size: 1.1rem;
-    border-radius: 30px;
-    font-weight: 600;
-    transition: background 0.3s, color 0.3s;
-}
-.hero-btn:hover {
-    background: #e0a800;
-    color: #fff;
-}
-
-.feature-section {
-    padding: 60px 0 40px 0;
-    background: #f8f9fa;
-}
-.feature-box {
-    background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
-    padding: 32px 24px;
-    text-align: center;
-    margin-bottom: 30px;
-    transition: box-shadow 0.3s;
-}
-.feature-box:hover {
-    box-shadow: 0 6px 32px rgba(0,0,0,0.13);
-}
-.feature-box i {
-    font-size: 2.5rem;
-    color: #ffc107;
-    margin-bottom: 18px;
-}
-.feature-box h4 {
-    font-size: 1.3rem;
-    font-weight: 600;
-    margin-bottom: 12px;
-}
-.feature-box p {
-    color: #666;
-    font-size: 1rem;
-}
-
-@media (max-width: 768px) {
-    .hero-section {
-        padding: 60px 0 30px 0;
-    }
-    .hero-section h1 {
-        font-size: 2rem;
-    }
-    .feature-section {
-        padding: 30px 0 20px 0;
-    }
 }
 
 /* Dropdown menu gelap */
 .dropdown-menu-dark {
     background-color: #343a40;
 }
-
 .dropdown-menu-dark .dropdown-item {
     color: #fff;
 }
-
 .dropdown-menu-dark .dropdown-item:hover {
     background-color: #495057;
     color: #ffc107;
 }
 
+/* Galeri */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -138,5 +61,38 @@ body {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* Produk, berita, dan lainnya bisa menyusul di sini… */
+
+
+
+/* ======= Beranda (Home Page) ======= */
+.hero {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+@media (max-width: 768px) {
+    .hero {
+        height: 60vh;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
     }
 }
