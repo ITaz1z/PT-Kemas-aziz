@@ -13,8 +13,10 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+<body style="padding-top: 70px;"> {{-- Agar konten tidak tertutup navbar --}}
+
+    {{-- ✅ HANYA SATU NAV --}}
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
         <div class="container">
             <a class="navbar-brand fw-bold" href="{{ route('home') }}">PT Kemas</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
@@ -24,27 +26,23 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ms-auto">
 
-                    {{-- BERANDA --}}
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Beranda</a>
                     </li>
 
-                    {{-- LAYANAN --}}
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('services') ? 'active' : '' }}" href="{{ route('services') }}">Layanan</a>
                     </li>
 
-                    {{-- TIM --}}
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('team') ? 'active' : '' }}" href="{{ route('team') }}">Tim Kami</a>
                     </li>
 
-                    {{-- GALERI --}}
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('galleries') ? 'active' : '' }}" href="{{ route('galleries') }}">Galeri</a>
                     </li>
 
-                    {{-- BERITA (Dropdown) --}}
+                    {{-- Dropdown Berita --}}
                     @php
                     $navCategories = \App\Models\Category::all();
                     @endphp
@@ -60,7 +58,7 @@
                         </ul>
                     </li>
 
-                    {{-- PRODUK (Dropdown) --}}
+                    {{-- Dropdown Produk --}}
                     @php
                     $navProductCategories = \App\Models\ProductCategory::all();
                     @endphp

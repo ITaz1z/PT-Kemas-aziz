@@ -14,7 +14,16 @@ use App\Http\Controllers\ProductController;
 | Halaman Utama
 |--------------------------------------------------------------------------
 */
+
 Route::get('/', [CompanyController::class, 'index'])->name('home');
+/*
+|--------------------------------------------------------------------------
+| About us  
+|--------------------------------------------------------------------------
+*/
+Route::get('/about', function () {
+    return view('company.about');
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -83,4 +92,4 @@ Route::get('/produk/{slug}', [ProductController::class, 'show'])->name('products
 Route::get('/produk/kategori/{slug}', [ProductController::class, 'byCategory'])->name('products.byCategory');
 
 // Halaman produk khusus (contoh: corrugated sheet)
-Route::get('/produk/corrugated-sheet', fn () => view('products.corrugated-sheet'))->name('products.corrugated-sheet');
+Route::get('/produk/corrugated-sheet', fn() => view('products.corrugated-sheet'))->name('products.corrugated-sheet');
