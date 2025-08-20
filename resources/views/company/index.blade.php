@@ -72,7 +72,7 @@
                 <div class="row mb-4">
                     <div class="col-md-6 mb-3">
                         <div class="d-flex align-items-center">
-                            <div class="bg-success rounded-circle p-2 me-3">
+                            <div class="circle-icon">
                                 <i class="fas fa-check text-white"></i>
                             </div>
                             <span class="fw-semibold">Kualitas Terjamin</span>
@@ -80,7 +80,7 @@
                     </div>
                     <div class="col-md-6 mb-3">
                         <div class="d-flex align-items-center">
-                            <div class="bg-success rounded-circle p-2 me-3">
+                            <div class="circle-icon">
                                 <i class="fas fa-check text-white"></i>
                             </div>
                             <span class="fw-semibold">Pelayanan 24/7</span>
@@ -88,7 +88,7 @@
                     </div>
                     <div class="col-md-6 mb-3">
                         <div class="d-flex align-items-center">
-                            <div class="bg-success rounded-circle p-2 me-3">
+                            <div class="circle-icon">
                                 <i class="fas fa-check text-white"></i>
                             </div>
                             <span class="fw-semibold">Ramah Lingkungan</span>
@@ -96,7 +96,7 @@
                     </div>
                     <div class="col-md-6 mb-3">
                         <div class="d-flex align-items-center">
-                            <div class="bg-success rounded-circle p-2 me-3">
+                            <div class="circle-icon">
                                 <i class="fas fa-check text-white"></i>
                             </div>
                             <span class="fw-semibold">Harga Kompetitif</span>

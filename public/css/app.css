@@ -1,3 +1,15 @@
+/* Lingkaran bulat sempurna untuk fitur About Us */
+.about-section .circle-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #198754;
+    margin-right: 0.75rem;
+    padding: 0;
+}
 /* ===================== UMUM ===================== */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
