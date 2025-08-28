@@ -41,17 +41,12 @@ Route::get('/tim', [TeamController::class, 'index'])->name('team');
 
 /*
 |--------------------------------------------------------------------------
-| Halaman Berita
+| Halaman Berita - DIPERBAIKI: Hapus konflik route
 |--------------------------------------------------------------------------
 */
-// Semua berita
-Route::get('/berita', [PostController::class, 'index'])->name('posts.index');
-
-
-// Berita berdasarkan kategori
-Route::get('/berita/kategori/{slug}', [PostController::class, 'byCategory'])->name('posts.byCategory');
-
-Route::get('/berita/{post:slug}', [PostController::class, 'show'])->name('posts.show');
+Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('posts.show');
+Route::get('/category/{category:slug}', [PostController::class, 'byCategory'])->name('posts.byCategory');
 
 /*
 |--------------------------------------------------------------------------
